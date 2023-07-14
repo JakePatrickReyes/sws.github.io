@@ -1,0 +1,1398 @@
+/* Decalring variable for consistency of design */
+
+:root {
+    --brown: #987554;
+    --lightbrown: #d2b48c;
+    --lightestbrown: #f0dbc0;
+    --darkbrown: #664229;
+    --black: #444;
+    --light-color: #777;
+    --red: #9c0a0a;
+    --box-shadow: .5rem .5rem 0 #9b882033;
+    --text-shadow: .5rem .5rem 0 rgba(0, 0, 0, .2);
+    --border: .2rem solid var(--brown);
+}
+
+
+/* Designing the scrollbar */
+
+::-webkit-scrollbar {
+    width: 1rem;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--brown);
+    border-radius: 10rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--darkbrown);
+}
+
+
+/* Animation for fade in */
+
+@-webkit-keyframes fadeIn {
+    0% {
+        -webkit-transform: translateY(2rem);
+        transform: translateY(2rem);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        -webkit-transform: translateY(2rem);
+        transform: translateY(2rem);
+        opacity: 0;
+    }
+}
+
+
+/* Apply to all */
+
+* {
+    font-family: Verdana;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    transition: all .2s ease-out;
+    text-decoration: none;
+}
+
+
+/* HTML Design */
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 7rem;
+    scroll-behavior: smooth;
+}
+
+
+/* --- For HEADER style - At first it is transparent --- */
+
+.header {
+    padding: 2rem 9%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+}
+
+
+/* --- When HEADER is active - Change BG to brown style --- */
+
+.header.active {
+    background: var(--brown);
+}
+
+
+/* Design logo of header */
+
+.header.active .logo {
+    font-size: 2.5rem;
+    color: #fff;
+}
+
+.header.active .logo i {
+    color: var(--lightbrown);
+}
+
+
+/* Applying design to Navigation Bar */
+
+.header.active .navbar a {
+    font-size: 1.7rem;
+    color: white;
+    margin-left: 2rem;
+    padding: .7rem;
+}
+
+.header.active .navbar a.active,
+.header.active .navbar a:hover {
+    color: var(--lightestbrown);
+    border-bottom-style: solid;
+    border-bottom-color: var(--lightestbrown);
+}
+
+.header .logo {
+    font-size: 2.5rem;
+    color: var(--black);
+}
+
+.header .logo i {
+    color: var(--brown);
+}
+
+.header .navbar a {
+    font-size: 1.7rem;
+    color: var(--light-color);
+    margin-left: 2rem;
+    padding: .7rem;
+}
+
+.header .navbar a.active,
+.header .navbar a:hover {
+    color: var(--brown);
+    border-bottom-style: solid;
+    border-bottom-color: var(--brown);
+}
+
+.header .icons a,
+.header .icons div {
+    color: var(--black);
+    font-size: 2.5rem;
+    border-radius: .5rem;
+    background: #eee;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+}
+
+.header .icons a:hover,
+.header .icons div:hover {
+    color: var(--brown);
+}
+
+
+/* --- When screen size is reduced display menu button --- */
+
+#menu-btn {
+    font-size: 2.5rem;
+    border-radius: .5rem;
+    background: #eee;
+    color: var(--brown);
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+
+
+/* Designing section of html */
+
+section {
+    padding: 2rem 10%;
+}
+
+
+/* To design all heading */
+
+.heading {
+    text-align: center;
+    padding-bottom: 2rem;
+    text-shadow: var(--text-shadow);
+    text-transform: uppercase;
+    color: var(--black);
+    font-size: 5rem;
+    letter-spacing: .4rem;
+}
+
+.heading span {
+    text-transform: uppercase;
+    color: var(--brown);
+}
+
+
+/* To design all button that has this class */
+
+.btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: .5rem;
+    padding-left: 1rem;
+    border: var(--border);
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);
+    color: var(--brown);
+    cursor: pointer;
+    font-size: 1.7rem;
+    background: #fff;
+}
+
+.btn span {
+    padding: .7rem 1rem;
+    border-radius: .5rem;
+    background: var(--brown);
+    color: #fff;
+    margin-left: .5rem;
+}
+
+.btn:hover {
+    background: var(--brown);
+    color: #fff;
+}
+
+.btn:hover span {
+    color: var(--brown);
+    background: #fff;
+    margin-left: 1rem;
+}
+
+/* --- For user Fill Up Form with this ID --- */
+
+#user-fill-up-form {
+    position: fixed;
+    top: -110%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1004;
+    background: rgba(0, 0, 0, .8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 15rem;
+}
+
+#user-fill-up-form.active {
+    top: 0;
+    display: block;
+    text-align: center;
+}
+
+#user-fill-up-form #closeBtn {
+    position: absolute;
+    color: #fff;
+    cursor: pointer;
+    top: 2rem;
+    right: 3rem;
+    font-size: 5rem;
+}
+
+#user-fill-up-form h3 {
+    text-align: center;
+    color: var(--lightbrown);
+    font-size: 2.5rem;
+    background: var(--darkbrown);
+    width: 50%;
+    display: inline-block;
+    padding: 1.5rem;
+    clip-path: polygon(100% 0, 93% 50%, 100% 99%, 0% 100%, 7% 50%, 0% 0%);
+    margin-bottom: 1rem;
+}
+
+#user-fill-up-form .box {
+    width: 50%;
+    border-bottom: 0.2rem solid #130f40;
+    border-width: .1rem;
+    padding: 1.5rem;
+    font-size: 1.6rem;
+    color: #130f40;
+    text-transform: none;
+    margin: 1rem 0;
+    border-radius: 2rem;
+}
+
+#user-fill-up-form .name {
+    width: 25%;
+    border-bottom: 0.2rem solid #130f40;
+    border-width: .1rem;
+    padding: 1.5rem;
+    font-size: 1.6rem;
+    color: #130f40;
+    text-transform: none;
+    margin: 1rem 0;
+    border-radius: 2rem;
+}
+
+#user-fill-up-form .btn {
+    width: 50%;
+    text-align: center;
+    margin: 1.5rem 0;
+    bottom: -2rem;
+    right: 2rem;
+    background: #fff;
+    font-size: 2.3rem;
+    padding: 1rem 2rem 1rem 2rem;
+    border-radius: 0 3rem 3rem 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    margin-top: .5rem;
+}
+
+#user-fill-up-form .btn:hover {
+    background: var(--brown);
+    color: #fff;
+}
+
+* --- For Registration Form with this ID --- */
+
+#register-form {
+    position: fixed;
+    top: -110%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1004;
+    background: rgba(0, 0, 0, .8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10rem;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+#register-form.active {
+    top: 0;
+    display: block;
+    text-align: center;
+}
+
+#register-form #closeRegister {
+    position: absolute;
+    color: #fff;
+    cursor: pointer;
+    top: 2rem;
+    right: 3rem;
+    font-size: 5rem;
+}
+
+#register-form h3 {
+    text-align: center;
+    color: var(--lightbrown);
+    font-size: 2.5rem;
+    background: var(--darkbrown);
+    width: 50%;
+    display: inline-block;
+    padding: 1.5rem;
+    clip-path: polygon(100% 0, 93% 50%, 100% 99%, 0% 100%, 7% 50%, 0% 0%);
+    margin-bottom: 1rem;
+}
+
+#register-form .box {
+    width: 50%;
+    height: 2rem;
+    border-width: .1rem;
+    padding: 2rem;
+    font-size: 1.6rem;
+    color: #130f40;
+    text-transform: none;
+    margin: 1rem 0;
+    border-radius: 2rem;
+}
+
+#register-form .name {
+    width: 25%;
+    height: 2rem;
+    border-bottom: 0.2rem solid #130f40;
+    border-width: .1rem;
+    padding: 2rem;
+    font-size: 1.6rem;
+    color: #130f40;
+    text-transform: none;
+    margin: 1rem 0;
+    border-radius: 2rem;
+}
+
+#register-form .add {
+    width: 17%;
+    height: 2rem;
+    border-bottom: 0.2rem solid #130f40;
+    border-width: .1rem;
+    padding: 2rem;
+    font-size: 1.6rem;
+    color: #130f40;
+    text-transform: none;
+    margin: 1rem 0;
+    border-radius: 2rem;
+}
+
+#register-form .register-gender {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#register-form .register-gender span {
+    margin-right: 1.7rem;
+    font-size: 2rem;
+    color: white;
+    font-weight: bold;
+}
+
+#register-form .register-gender label {
+    padding: 1.5rem;
+    font-size: 1.7rem;
+    color: white;
+}
+
+#register-form .user-type {
+    width: 82%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#register-form .user-type span {
+    margin-right: 1.3rem;
+    font-size: 2rem;
+    color: white;
+    font-weight: bold;
+}
+
+#register-form .user-type .type {
+    width: 50%;
+    padding: 1rem;
+    color: black;
+    border-bottom: 0.2rem solid #130f40;
+    border-radius: 2rem;
+    margin: 1rem 0;
+    font-size: 1.6rem;
+}
+
+#register-form .box-container {
+    display: flex;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+}
+
+#register-form p {
+    text-align: center;
+    color: var(--lightbrown);
+    font-size: 2.5rem;
+    padding-bottom: .5rem;
+    font-weight: bold;
+}
+
+#register-form .box-container .option {
+    border-radius: .5rem;
+    background: #fff;
+    box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .1);
+    outline: .3rem solid var(--brown);
+    outline-offset: -1rem;
+    text-align: center;
+    padding: 1rem;
+}
+
+#register-form .box-container .option.active {
+    outline: .2rem solid var(--brown);
+    outline-offset: 0rem;
+    background-color: var(--lightbrown);
+}
+
+#register-form .box-container .option:hover {
+    outline: .2rem solid var(--brown);
+    outline-offset: 0rem;
+    cursor: pointer;
+}
+
+#register-form .box-container .option img {
+    margin: 0rem 0;
+    height: 10rem;
+}
+
+#register-form .btn {
+    width: 50%;
+    text-align: center;
+    margin: 1.5rem 0;
+    bottom: -2rem;
+    right: 2rem;
+    background: #fff;
+    font-size: 2.3rem;
+    padding: 1rem 2rem 1rem 2rem;
+    border-radius: 0 3rem 3rem 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    margin-top: .5rem;
+}
+
+#register-form .btn:hover {
+    background: var(--brown);
+    color: #fff;
+}
+
+
+/* Customize the label (the container) */
+
+.container {
+    display: flex;
+    position: relative;
+    cursor: pointer;
+    margin-left: 3rem;
+}
+
+
+/* Hide the browser's default radio button */
+
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+
+/* Create a custom radio button */
+
+.checkmark {
+    position: absolute;
+    left: -2rem;
+    top: 1.4rem;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+
+/* On mouse-over, add a grey background color */
+
+.container:hover input~.checkmark {
+    background-color: #ccc;
+}
+
+
+/* When the radio button is checked*/
+
+.container input:checked~.checkmark {
+    background-color: var(--lightbrown);
+}
+
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+
+/* Show the indicator (dot/circle) when checked */
+
+.container input:checked~.checkmark:after {
+    display: block;
+}
+
+
+/* Style the indicator (dot/circle) */
+
+.container .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
+
+/* --- For Donating Fill Up Form with this ID --- */
+
+#donation-fill-form {
+    position: fixed;
+    top: -110%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1004;
+    background: rgba(0, 0, 0, .8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 15rem;
+}
+
+#donation-fill-form.active {
+    top: 0;
+    display: block;
+    text-align: center;
+}
+
+#donation-fill-form #close {
+    position: absolute;
+    color: #fff;
+    cursor: pointer;
+    top: 2rem;
+    right: 3rem;
+    font-size: 5rem;
+}
+
+#donation-fill-form h3 {
+    text-align: center;
+    color: var(--lightbrown);
+    font-size: 2.5rem;
+    background: var(--darkbrown);
+    width: 50%;
+    display: inline-block;
+    padding: 1.5rem;
+    clip-path: polygon(100% 0, 93% 50%, 100% 99%, 0% 100%, 7% 50%, 0% 0%);
+    margin-bottom: 1rem;
+}
+
+#donation-fill-form .box {
+    width: 50%;
+    border-bottom: 0.2rem solid #130f40;
+    border-width: .1rem;
+    padding: 1.5rem;
+    font-size: 1.6rem;
+    color: #130f40;
+    text-transform: none;
+    margin: 1rem 0;
+    border-radius: 2rem;
+}
+
+#donation-fill-form .name {
+    width: 25%;
+    border-bottom: 0.2rem solid #130f40;
+    border-width: .1rem;
+    padding: 1.5rem;
+    font-size: 1.6rem;
+    color: #130f40;
+    text-transform: none;
+    margin: 1rem 0;
+    border-radius: 2rem;
+}
+
+#donation-fill-form .box-container {
+    display: flex;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+}
+
+#donation-fill-form .box-container .option {
+    border-radius: .5rem;
+    background: #fff;
+    box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .1);
+    outline: .3rem solid var(--brown);
+    outline-offset: -1rem;
+    text-align: center;
+    padding: 1rem;
+}
+
+#donation-fill-form .box-container .option.active {
+    outline: .2rem solid var(--brown);
+    outline-offset: 0rem;
+    background-color: var(--lightbrown);
+}
+
+#donation-fill-form .box-container .option:hover {
+    outline: .2rem solid var(--brown);
+    outline-offset: 0rem;
+    cursor: pointer;
+}
+
+#donation-fill-form .box-container .option img {
+    margin: 0rem 0;
+    height: 10rem;
+}
+
+#donation-fill-form .btn {
+    width: 50%;
+    text-align: center;
+    margin: 1.5rem 0;
+    bottom: -2rem;
+    right: 2rem;
+    background: #fff;
+    font-size: 2.3rem;
+    padding: 1rem 2rem 1rem 2rem;
+    border-radius: 0 3rem 3rem 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    margin-top: .5rem;
+}
+
+#donation-fill-form .btn:hover {
+    background: var(--brown);
+    color: #fff;
+}
+
+
+/* --- For Adoption Fill Up Form with this ID --- */
+
+#adoption-fill-up-form {
+    position: fixed;
+    top: -110%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1004;
+    background: rgba(0, 0, 0, .8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 15rem;
+}
+
+#adoption-fill-up-form.active {
+    top: 0;
+    display: block;
+    text-align: center;
+}
+
+#adoption-fill-up-form #closeBtn {
+    position: absolute;
+    color: #fff;
+    cursor: pointer;
+    top: 2rem;
+    right: 3rem;
+    font-size: 5rem;
+}
+
+#adoption-fill-up-form h3 {
+    text-align: center;
+    color: var(--lightbrown);
+    font-size: 2.5rem;
+    background: var(--darkbrown);
+    width: 50%;
+    display: inline-block;
+    padding: 1.5rem;
+    clip-path: polygon(100% 0, 93% 50%, 100% 99%, 0% 100%, 7% 50%, 0% 0%);
+    margin-bottom: 1rem;
+}
+
+#adoption-fill-up-form .box {
+    width: 50%;
+    border-bottom: 0.2rem solid #130f40;
+    border-width: .1rem;
+    padding: 1.5rem;
+    font-size: 1.6rem;
+    color: #130f40;
+    text-transform: none;
+    margin: 1rem 0;
+    border-radius: 2rem;
+}
+
+#adoption-fill-up-form .name {
+    width: 25%;
+    border-bottom: 0.2rem solid #130f40;
+    border-width: .1rem;
+    padding: 1.5rem;
+    font-size: 1.6rem;
+    color: #130f40;
+    text-transform: none;
+    margin: 1rem 0;
+    border-radius: 2rem;
+}
+
+#adoption-fill-up-form .btn {
+    width: 50%;
+    text-align: center;
+    margin: 1.5rem 0;
+    bottom: -2rem;
+    right: 2rem;
+    background: #fff;
+    font-size: 2.3rem;
+    padding: 1rem 2rem 1rem 2rem;
+    border-radius: 0 3rem 3rem 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    margin-top: .5rem;
+}
+
+#adoption-fill-up-form .btn:hover {
+    background: var(--brown);
+    color: #fff;
+}
+
+
+/* --- For Sign Up Fill Up Form with this ID --- */
+
+#sign-up-form {
+    position: fixed;
+    top: -110%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1004;
+    background: rgba(0, 0, 0, .8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 18rem;
+}
+
+#sign-up-form.active {
+    top: 0;
+    display: block;
+    text-align: center;
+}
+
+#sign-up-form #closeVolBtn {
+    position: absolute;
+    color: #fff;
+    cursor: pointer;
+    top: 2rem;
+    right: 3rem;
+    font-size: 5rem;
+}
+
+#sign-up-form h3 {
+    text-align: center;
+    color: var(--lightbrown);
+    font-size: 2.5rem;
+    background: var(--darkbrown);
+    width: 50%;
+    display: inline-block;
+    padding: 1.5rem;
+    clip-path: polygon(100% 0, 93% 50%, 100% 99%, 0% 100%, 7% 50%, 0% 0%);
+    margin-bottom: 1rem;
+}
+
+#sign-up-form .box {
+    width: 50%;
+    border-bottom: 0.2rem solid #130f40;
+    border-width: .1rem;
+    padding: 1.5rem;
+    font-size: 1.6rem;
+    color: #130f40;
+    text-transform: none;
+    margin: 1rem 0;
+    border-radius: 2rem;
+}
+
+#sign-up-form .name {
+    width: 25%;
+    border-bottom: 0.2rem solid #130f40;
+    border-width: .1rem;
+    padding: 1.5rem;
+    font-size: 1.6rem;
+    color: #130f40;
+    text-transform: none;
+    margin: 1rem 0;
+    border-radius: 2rem;
+}
+
+#sign-up-form p {
+    text-align: center;
+    color: var(--lightbrown);
+    font-size: 2.5rem;
+    padding-bottom: .5rem;
+    font-weight: bold;
+}
+
+#sign-up-form .btn {
+    width: 50%;
+    text-align: center;
+    margin: 1.5rem 0;
+    bottom: -2rem;
+    right: 2rem;
+    background: #fff;
+    font-size: 2.3rem;
+    padding: 1rem 2rem 1rem 2rem;
+    border-radius: 0 3rem 3rem 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    margin-top: .5rem;
+}
+
+#sign-up-form .btn:hover {
+    background: var(--brown);
+    color: #fff;
+}
+
+
+/* --- For Reports Fill Up Form with this ID --- */
+
+#reports-fill-up-form {
+    position: fixed;
+    top: -110%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1004;
+    background: rgba(0, 0, 0, .8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 8rem;
+}
+
+#reports-fill-up-form.active {
+    top: 0;
+    display: block;
+    text-align: center;
+}
+
+#reports-fill-up-form #closeRepBtn {
+    position: absolute;
+    color: #fff;
+    cursor: pointer;
+    top: 2rem;
+    right: 3rem;
+    font-size: 5rem;
+}
+
+#reports-fill-up-form h3 {
+    text-align: center;
+    color: var(--lightbrown);
+    font-size: 2.5rem;
+    background: var(--darkbrown);
+    width: 50%;
+    display: inline-block;
+    padding: 1.5rem;
+    clip-path: polygon(100% 0, 93% 50%, 100% 99%, 0% 100%, 7% 50%, 0% 0%);
+    margin-bottom: 1rem;
+}
+
+#reports-fill-up-form .box {
+    width: 50%;
+    border-bottom: 0.2rem solid #130f40;
+    border-width: .1rem;
+    padding: 1.5rem;
+    font-size: 1.6rem;
+    color: #130f40;
+    text-transform: none;
+    margin: 1rem 0;
+    border-radius: 2rem;
+}
+
+#reports-fill-up-form .name {
+    width: 25%;
+    border-bottom: 0.2rem solid #130f40;
+    border-width: .1rem;
+    padding: 1.5rem;
+    font-size: 1.6rem;
+    color: #130f40;
+    text-transform: none;
+    margin: 1rem 0;
+    border-radius: 2rem;
+}
+
+#reports-fill-up-form textarea {
+    width: 50%;
+    padding: 1.5rem;
+    margin: .7rem 0;
+    border-radius: .5rem;
+    border: var(--border);
+    font-size: 1.6rem;
+    color: var(--black);
+    text-transform: none;
+    border-radius: 2rem;
+}
+
+#reports-fill-up-form .btn {
+    width: 50%;
+    text-align: center;
+    margin: 1.5rem 0;
+    bottom: -2rem;
+    right: 2rem;
+    background: #fff;
+    font-size: 2.3rem;
+    padding: 1rem 2rem 1rem 2rem;
+    border-radius: 0 3rem 3rem 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    margin-top: .5rem;
+}
+
+#reports-fill-up-form .btn:hover {
+    background: var(--brown);
+    color: #fff;
+}
+
+
+/* --- For Designing the Home Section --- */
+
+.home {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+    text-align: center;
+    background: linear-gradient(to bottom, transparent, #d2b48c), url("../img/back.png") no-repeat !important;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+.home .image {
+    flex: 1 1 34rem;
+}
+
+.home .image img {
+    width: 100%;
+}
+
+.home .content {
+    flex: 1 1 44rem;
+    text-align: center;
+}
+
+.home .content h3 {
+    font-size: 5.5rem;
+    color: var(--black);
+    line-height: 1.8;
+    text-shadow: var(--text-shadow);
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--brown);
+    text-shadow: 1.5px 1.5px 1.5px #444, 1.5px 1.5px 1.5px #444, 1.5px 1.5px 1.5px #444, 1.5px 1.5px 1.5px #444;
+}
+
+.home .content p {
+    font-size: 1.8rem;
+    color: var(--black);
+    line-height: 1.8;
+    padding: 1rem 0;
+    letter-spacing: 5px;
+    font-weight: bold;
+    border-bottom-style: dotted;
+    border-bottom-width: 3.5px;
+    border-bottom-color: var(--brown);
+}
+
+.home .wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 12rem;
+}
+
+
+/* --- For Designing the Tables for each Section --- */
+
+.userRecords,
+.strayRecords,
+.donationRecords,
+.adoptionRecords,
+.reportsRecords {
+    padding: 5rem;
+    margin: 5rem auto 0;
+    margin-bottom: 5rem;
+    height: 600px;
+    overflow: hidden;
+    overflow-y: scroll;
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    border: 1px solid #eee;
+    width: 90%
+}
+
+.user-content,
+.stray-content,
+.donation-content,
+.adoption-content,
+.reports-content {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#user-btn,
+#stray-btn,
+#donate-btn,
+#adopt-btn,
+#report-btn {
+    color: var(--black);
+    font-size: 2.5rem;
+    border-radius: .5rem;
+    background: #eee;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    margin-top: -3rem;
+    margin-right: -3rem;
+    float: right;
+}
+
+#user-btn:hover,
+#stray-btn:hover,
+#donate-btn:hover,
+#adopt-btn:hover,
+#report-btn:hover {
+    color: #eee;
+    background-color: var(--lightbrown);
+}
+
+.userRecords .user-content thead,
+.strayRecords .stray-content thead,
+.donationRecords .donation-content thead,
+.adoptionRecords .adoption-content thead,
+.reportsRecords .reports-content thead {
+    background-color: var(--lightbrown);
+}
+
+.userRecords .user-content thead tr th,
+.strayRecords .stray-content thead tr th,
+.donationRecords .donation-content thead tr th,
+.adoptionRecords .adoption-content thead tr th,
+.reportsRecords .reports-content thead tr th {
+    font-size: 1.5rem;
+    color: var(--black);
+    text-align: center;
+    font-weight: bold;
+    opacity: 1;
+    padding: 12px;
+    vertical-align: top;
+    border: var(--border);
+}
+
+.user-row,
+.stray-row,
+.donation-row,
+.adoption-row,
+.reports-row {
+    align-items: center;
+    position: relative;
+}
+
+.user-deets,
+.stray-deets,
+.donation-deets,
+.adoption-deets,
+.reports-deets {
+    font-size: 1.2rem;
+    color: var(--black);
+    font-weight: normal;
+    padding: .5rem;
+    text-align: center;
+    border: var(--border);
+}
+
+
+/* --- For Designing the Inline Button in the table --- */
+
+.btnComplete {
+    background: #a8e0b7;
+    display: inline-block;
+    padding: 1rem;
+    border-radius: .5rem;
+    color: black;
+    cursor: pointer;
+    font-size: 1.7rem;
+}
+
+.btnProcessing {
+    background: var(--lightestbrown);
+    display: inline-block;
+    padding: 1rem;
+    border-radius: .5rem;
+    color: black;
+    cursor: pointer;
+    font-size: 1.7rem;
+}
+
+.btnComplete:hover,
+.btnProcessing:hover {
+    background: var(--brown);
+    color: var(--lightestbrown);
+}
+
+
+/* --- For Designing the Footer Section --- */
+
+.footer .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+    gap: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    background: linear-gradient(to top, transparent, #f0dbc0);
+}
+
+.footer .box-container .box h3 {
+    font-size: 2.5rem;
+    color: var(--black);
+    padding: 1rem 0;
+}
+
+.footer .box-container .box a {
+    display: block;
+    font-size: 1.5rem;
+    color: var(--light-color);
+    padding: 1rem 0;
+}
+
+.footer .box-container .box a i {
+    padding-right: .5rem;
+    color: var(--brown);
+}
+
+.footer .box-container .box a:hover i {
+    padding-right: 2rem;
+}
+
+.footer {
+    padding: 0px;
+    text-align: center;
+    bottom: 0;
+}
+
+.footerText {
+    font-size: 13px;
+    background-color: var(--brown);
+    padding: 10px;
+    color: #fff;
+}
+
+.footerText p {
+    padding: 0.5rem;
+    text-transform: bold;
+    font-size: 1.5rem;
+}
+
+.footerIconDiv {
+    display: inline-flex;
+    list-style: none;
+}
+
+.footerIcon {
+    float: right;
+    width: 25px;
+    height: 25px;
+}
+
+.footerIcon:hover {
+    opacity: 70%;
+    cursor: pointer;
+}
+
+
+/* Media Queries - For Responsive Layout */
+
+@media (max-width:991px) {
+    html {
+        font-size: 55%;
+    }
+    .header {
+        padding: 2rem;
+    }
+    section {
+        padding: 2rem;
+    }
+    .home .content {
+        text-align: center;
+        padding-bottom: 5rem;
+    }
+}
+
+@media (max-width:1500px) {
+    /* Activate the menu button */
+    #menu-btn {
+        display: initial;
+    }
+    /* Change the display of navigation bar links */
+    .header .navbar {
+        position: absolute;
+        border-radius: .5rem;
+        top: 110%;
+        right: 1rem;
+        width: 30rem;
+        background: #fff;
+        transform: scale(0);
+        opacity: 0;
+        transform-origin: top right;
+        transition: none;
+        -webkit-box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    }
+    .header .navbar.active {
+        transform: scale(1);
+        opacity: 1;
+        -webkit-animation: fadeIn .3s linear;
+        animation: fadeIn .3s linear;
+    }
+    .header .navbar a {
+        font-size: 2rem;
+        display: block;
+        margin: 2.5rem;
+    }
+    .header.active .navbar.active a {
+        font-size: 2rem;
+        display: block;
+        margin: 2.5rem;
+        color: var(--light-color);
+    }
+    .header.active .navbar.active a.active,
+    .header.active .navbar.active a:hover {
+        color: var(--brown);
+        border-bottom-style: solid;
+        border-bottom-color: var(--brown);
+    }
+}
+
+@media (max-width:450px) {
+    html {
+        font-size: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Change the display of table records */
+    .donationRecords .donation-content thead,
+    .adoptionRecords .adoption-content thead,
+    .volunteerRecords .volunteer-content thead,
+    .reportsRecords .reports-content thead {
+        display: none;
+    }
+    .donation-content,
+    .donation-content tbody,
+    .donation-content tr,
+    .donation-content td {
+        display: block;
+        width: 100%;
+    }
+    .adoption-content,
+    .adoption-content tbody,
+    .adoption-content tr,
+    .adoption-content td {
+        display: block;
+        width: 100%;
+    }
+    .volunteer-content,
+    .volunteer-content tbody,
+    .volunteer-content tr,
+    .volunteer-content td {
+        display: block;
+        width: 100%;
+    }
+    .reports-content,
+    .reports-content tbody,
+    .reports-content tr,
+    .reports-content td {
+        display: block;
+        width: 100%;
+    }
+    .donation-content tr,
+    .adoption-content tr,
+    .volunteer-content tr,
+    .reports-content tr {
+        margin-bottom: 1rem;
+    }
+    .donationRecords .donation-content tbody tr td,
+    .adoptionRecords .adoption-content tbody tr td,
+    .volunteerRecords .volunteer-content tbody tr td,
+    .reportsRecords .reports-content tbody tr td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+    .donation-content td::before,
+    .adoption-content td::before,
+    .volunteer-content td::before,
+    .reports-content td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 1rem;
+        font-weight: bold;
+        font-size: 2rem;
+        text-align: left;
+    }
+}

@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safe Space for Strays</title>
+    <!-- font awesome cdn link : to be able to use html icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- to have an icon displayed at the tab -->
+    <link rel="icon" href="img/sss.png">
+
+    <!-- custom css file link -->
+    <link rel="stylesheet" type="text/CSS" href="css/style.css">
+</head>
+
+<body>
+    <!-- --------------------- HEADER SECTION STARTS HERE -------------------- -->
+    <header class="header">
+        <a href="#" class="logo"><i class="fas fa-paw"></i> S.S.S Organization</a>
+
+        <!-- navigation bar -->
+        <nav class="navbar">
+            <a href="#home"> Home </a>
+            <a href="#about"> About </a>
+            <a href="#services"> Services </a>
+            <a href="#adopt"> Adopt </a>
+            <a href="#updates"> NewsFeed </a>
+            <a href="#donate"> Donate </a>
+            <a href="#contact"> Contact </a>
+        </nav>
+
+        <!-- icons at the navigation bar -->
+        <div class="icons">
+            <div class="fas fa-suitcase" id="bag-btn"></div>
+            <div class="fas fa-heartbeat" id="heart-btn"></div>
+            <div class="fas fa-user" id="login-btn"></div>
+            <div class="fas fa-bars" id="menu-btn"></div>
+        </div>
+
+        <!-- likes bag  -->
+        <div class="likes">
+            <h1 class="title">Your Likes</h1>
+            <div class="likes-items">
+            </div>
+            <div class="likes-total">
+                <strong class="likes-total-title">Total: </strong>
+                <span class="likes-total-price">0</span>
+            </div>
+        </div>
+
+        <!-- adoption bag -->
+        <div class="adopt-bag">
+            <h1 class="title">Your Adoption Bag</h1>
+            <div class="bag-row">
+            </div>
+            <div class="bag-items">
+            </div>
+            <div class="cart-empty">
+                <img class="cart-empty-image" src="img/cart.png" alt="">
+            </div>
+            <div class="bag-total">
+                <strong class="bag-total-title">Total: </strong>
+                <span class="bag-total-number">0</span>
+            </div>
+            <button class="btn" type="button" onclick="popAdoptForm()">Take Home</button>
+        </div>
+
+        <!-- sign up form  -->
+        <form action="" class="sign-up-form">
+            <h3>Be one of us</h3>
+            <input type="email" name="" placeholder="Enter you email" id="volEmail" class="box" required>
+            <input type="text" name="" placeholder="First Name" id="volFName" class="box" required>
+            <input type="text" name="" placeholder="Last Name" id="volLName" class="box" required>
+            <input type="date" name="" placeholder="Birthday" id="=volBDay" class="box" required>
+            <input type="text" name="" placeholder="Address" id="volAdd" class="box" required>
+            <input type="button" value="Sign Up" class="btn" onclick="signVolunteer()">
+
+            <!-- Internal Javascript - Signing up -->
+            <script>
+                function signVolunteer() {
+                    if (document.getElementById("volEmail").value.length == 0 && document.getElementById("volFName").value.length == 0 && document.getElementById("volLName").value.length == 0 && document.getElementById("volBDay").value.length == 0 && document.getElementById("volAdd").value.length == 0) {
+                        alert("Please fill out our Volunteer form. Thank you!");
+                    } else {
+                        document.getElementById("volEmail").value = '';
+                        document.getElementById("volFName").value = '';
+                        document.getElementById("volLName").value = '';
+                        document.getElementById("volAdd").value = '';
+                        alert('Your response has been recorded and is now in our pending request. Kindly wait patiently for our response. Thank you!');
+                        document.getElementsByClassName("sign-up-form")[0].classList.remove("active");
+                        return;
+                    }
+                }
+            </script>
+            <button id="loginAdmin" type="button">Log In as Admin</button>
+        </form>
+
+        <script>
+            /* Internal Javascript - Logging in as admin */
+            function loginAdmin(form) {
+                if (form.username.value == "safespaceforstrays") {
+                    if (form.pass.value == "sssorg") {
+                        location = "indexAdmin.html";
+                        alert("Welcome, Admin!");
+                    } else
+                        alert("Invalid Password");
+                } else alert("Invalid Username");
+            }
+        </script>
+
+        <!-- login form -->
+        <form name="login" action="" method="POST" class="login-form">
+            <h3>Sign In</h3>
+            <input type="text" name="username" placeholder="Username" id="uName" class="box" required>
+            <input type="password" name="pass" placeholder="Password" id="uPass" class="box" required>
+            <div class="remember">
+                <input type="checkbox" name="" id="remember-me">
+                <label for="remember-me">Remember Me</label>
+            </div>
+            <input type="button" value="Log In" class="btn" onClick="loginAdmin(this.form)">
+            <button id="signupVolunteer" type="button">Sign Up as Volunteer</button>
+
+        </form>
+
+        <!-- donation fill up form -->
+        <form action="" id="fill-up-form">
+            <i class="fas fa-times" id="close"></i>
+            <h3>Donation Fill Up Form</h3>
+            <input type="email" name="" placeholder="Enter you email" id="email" class="box" required><br>
+            <input type="text" name="" placeholder="First Name" id="fname" class="name" required>
+            <input type="text" name="" placeholder="Last Name" id="lname" class="name" required><br>
+            <input type="text" name="" placeholder="Address" id="address" class="box" required>
+            <div class="box-container">
+                <div class="option" id="bdo">
+                    <img src="img/bdo.png" alt="">
+                </div>
+                <div class="option" id="gcash">
+                    <img src="img/gcash.png" alt="">
+                </div>
+                <div class="option" id="cbank">
+                    <img src="img/cbank.png" alt="">
+                </div>
+                <div class="option" id="ubank">
+                    <img src="img/ubank.png" alt="">
+                </div>
+            </div>
+            <input type="number" name="" placeholder="Enter Amount" id="amnt" class="box" required>
+            <button class="btn" type="button" id="donateBtn" onclick="submitDonate()">Submit</button>
+        </form>
+
+        <!-- adoption fill up form  -->
+        <form action="" id="adoption-fill-up-form">
+            <i class="fas fa-times" id="closeBtn"></i>
+            <h3>Adoption Fill Up Form</h3>
+            <input type="email" name="" placeholder="Enter you email" id="adoptEmail" class="box" required><br>
+            <input type="text" name="" placeholder="First Name" id="adoptFname" class="name" required>
+            <input type="text" name="" placeholder="Last Name" id="adoptLname" class="name" required><br>
+            <input type="text" name="" placeholder="Address" id="adoptAddress" class="box" required>
+            <p>Donate (Optional)</p>
+            <div class="box-container">
+                <div class="option" id="BDO">
+                    <img src="img/bdo.png" alt="">
+                </div>
+                <div class="option" id="GCASH">
+                    <img src="img/gcash.png" alt="">
+                </div>
+                <div class="option" id="CBANK">
+                    <img src="img/cbank.png" alt="">
+                </div>
+                <div class="option" id="UBANK">
+                    <img src="img/ubank.png" alt="">
+                </div>
+            </div>
+            <input type="number" name="" placeholder="Enter Amount" id="adoptAmnt" class="box" required>
+            <button class="btn" type="button" onclick="submitAdopt()">Submit</button>
+        </form>
+
+    </header>
+    <!-- --------------------- HEADER SECTION ENDS HERE -------------------- -->
+
+    <!-- --------------------- HOME SECTION STARTS HERE -------------------- -->
+    <section class="home" id="home">
+        <div class="image">
+            <img src="img/sss.png" alt="">
+        </div>
+
+        <div class="content">
+            <h3>Let's live in a Better World!</h3>
+            <p>Where strays can also have their <br> own safe space. </p>
+            <a href="#about" class="btn"> Learn more <span class="fas fa-chevron-right"></span> </a>
+        </div>
+
+        <img src="img/bottom_wave.png" class="wave" alt="">
+
+        <!-- popup alert message box-->
+        <div class="popup center">
+            <div class="icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <div class="pop-title">
+                Succesfully added!
+            </div>
+            <div class="pop-desc">
+                It is within our pleasure that you want this furbaby. Godbless to you and enjoy browsing!
+            </div>
+            <div class="dismiss-btn">
+                <button id="dismiss-popup-btn">Dismiss</button>
+            </div>
+        </div>
+
+        <!-- popup alert message box for invalid -->
+        <div class="popup-invalid center">
+            <div class="icon">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="pop-title">
+                Unsucessful. Furbaby is already addded!
+            </div>
+            <div class="pop-desc">
+                This furbaby is already in your Adoption Bag! Kindly "Add" other Animal/s.
+            </div>
+            <div class="dismiss-btn">
+                <button id="dismiss-popup-invalid-btn">Dismiss</button>
+            </div>
+        </div>
+    </section>
+    <!-- --------------------- HOME SECTION ENDS HERE -------------------- -->
+
+    <!-- --------------------- ABOUT SECTION STARTS HERE -------------------- -->
+    <section class="about" id="about">
+        <h1 class="heading"> <span>about</span> us </h1>
+        <div class="row">
+            <div class="content">
+                <h3><span class="fas fa-quote-left"></span> We focus on sheltering strays that has been neglected in the streets <span class="fas fa-quote-right"></span></h3>
+                <p>Safe Space for Strays is not just merely an organization but a safe home for animals that was unfortunate in the beginning of their lives. We believe that in this big world, strays should also exist together with good people because their
+                    lives also matter.</p>
+                <p>In this website, the chosen content about a sheltering home is the Strays Worth Saving (SWS) organization.<br><br><i>"SWS is dedicated to giving animals who are in extreme pain a second chance at life. We rescue strays who are suffering
+                    in the streets with no one to take care of them. We also rescue pets who are abused, neglected, or abandoned by their owners. Occasionally, we financially assist owners who love their pets but cannot afford treatment for painful diseases."
+                    --Strays Worh Saving</i>
+                </p>
+
+            </div>
+
+            <div class="image">
+                <img src="img/about.jpg" alt="">
+            </div>
+        </div>
+    </section>
+    <!-- --------------------- ABOUT SECTION ENDS HERE -------------------- -->
+
+    <!-- --------------------- SERVICES SECTION STARTS HERE -------------------- -->
+    <section class="services" id="services">
+        <h1 class="heading"> Offered <span>Services</span> </h1>
+        <div class="services-container">
+            <div class="service">
+                <i class="fas fa-hand-holding-heart"></i>
+                <h3>Rescue</h3>
+                <p>We give a second chance to animals who are in extreme pain. These are strays who are all alone with no one to care for them. We bring them to a trusted vet and fund their treatment.</p>
+            </div>
+
+            <div class="service">
+                <i class="fas fa-hospital-alt"></i>
+                <h3>Shelter</h3>
+                <p>Our shelter in Tanauan, Batangas takes care of over 100 rescues who are waiting for a forever home. They are fed thrice a day, cleaned, and have space to play.</p>
+            </div>
+
+            <div class="service">
+                <i class="fas fa-heartbeat"></i>
+                <h3>Adoption</h3>
+                <p>We work hard to find forever homes for our rescues. SWS adopters are strictly screened to ensure that they can give our rescues a good life.</p>
+            </div>
+
+            <div class="service">
+                <i class="fas fa-medkit"></i>
+                <h3>Spay & Neuter</h3>
+                <p>SWS's ultimate dream is a stray-free Philippines. We promote Spay and Neuter and offer low-cost options.</p>
+            </div>
+
+            <div class="service">
+                <i class="fas fa-syringe"></i>
+                <h3>Vaccine Awarenesss</h3>
+                <p>Every cat and dog deserves to live a long and healthy life. We advocate for responsible pet ownership through vaccinations.</p>
+            </div>
+        </div>
+    </section>
+    <!-- --------------------- SERVICES SECTION ENDS HERE -------------------- -->
+
+    <!-- ---------------- ADOPTION CATALOG SECTION STARTS HERE --------------- -->
+    <section class="adopt" id="adopt">
+        <h1 class="heading"> Adopt <span> Us </span> </h1>
+        <div class="adopt-box-container">
+            <!-- 20 beautiful furbabies to adopt -->
+            <div class="adopt-box">
+                <div class="adopt-info">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Description</h3>
+                    <span>Loyal <br> Devoted <br> Forever <br> Reliable <br> Faithful </span>
+                </div>
+                <div class="icons">
+                    <button class="fas fa-shopping-bag" name="add" type="button"></button>
+                    <button class="fas fa-heart" name="like" type="button"></button>
+                </div>
+                <div class="adopt-image">
+                    <img class="adopt-image-src" src="img/dogs/amaya.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3 class="adopt-name">Amaya</h3>
+                    <div class="gender"> Female </div>
+                </div>
+            </div>
+
+            <div class="adopt-box">
+                <div class="adopt-info">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Description</h3>
+                    <span>Love <br> Buddy <br> Friend <br> Sidekick <br> Companion </span>
+                </div>
+                <div class="icons">
+                    <button class="fas fa-shopping-bag" name="add" type="button"></button>
+                    <button class="fas fa-heart" name="like" type="button"></button>
+                </div>
+
+                <div class="adopt-image">
+                    <img class="adopt-image-src" src="img/dogs/ampon.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3 class="adopt-name">Ampon</h3>
+                    <div class="gender"> Female </div>
+                </div>
+            </div>
+
+            <div class="adopt-box">
+                <div class="adopt-info">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Description</h3>
+                    <span>Loyal <br> Devoted <br> Forever <br> Reliable <br> Faithful </span>
+                </div>
+                <div class="icons">
+                    <button class="fas fa-shopping-bag" name="add" type="button"></button>
+                    <button class="fas fa-heart" name="like" type="button"></button>
+                </div>
+                <div class="adopt-image">
+                    <img class="adopt-image-src" src="img/dogs/cally.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3 class="adopt-name">Cally</h3>
+                    <div class="gender"> Female </div>
+                </div>
+            </div>
+
+            <div class="adopt-box">
+                <div class="adopt-info">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Description</h3>
+                    <span>Love <br> Buddy <br> Friend <br> Sidekick <br> Companion </span>
+                </div>
+                <div class="icons">
+                    <button class="fas fa-shopping-bag" name="add" type="button"></button>
+                    <button class="fas fa-heart" name="like" type="button"></button>
+                </div>
+                <div class="adopt-image">
+                    <img class="adopt-image-src" src="img/dogs/elly.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3 class="adopt-name">Elly</h3>
+                    <div class="gender"> Female </div>
+                </div>
+            </div>
+
+            <div class="adopt-box">
+                <div class="adopt-info">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Description</h3>
+                    <span>Loyal <br> Devoted <br> Forever <br> Reliable <br> Faithful </span>
+                </div>
+                <div class="adopt-info">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Description</h3>
+                    <span>Loyal <br> Devoted <br> Forever <br> Reliable <br> Faithful </span>
+                </div>
+                <div class="icons">
+                    <button class="fas fa-shopping-bag" name="add" type="button"></button>
+                    <button class="fas fa-heart" name="like" type="button"></button>
+                </div>
+                <div class="adopt-image">
+                    <img class="adopt-image-src" src="img/dogs/mary.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3 class="adopt-name">Mary</h3>
+                    <div class="gender"> Female </div>
+                </div>
+            </div>
+
+            <div class="adopt-box">
+                <div class="adopt-info">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Description</h3>
+                    <span>Love <br> Buddy <br> Friend <br> Sidekick <br> Companion </span>
+                </div>
+                <div class="icons">
+                    <button class="fas fa-shopping-bag" name="add" type="button"></button>
+                    <button class="fas fa-heart" name="like" type="button"></button>
+                </div>
+                <div class="adopt-image">
+                    <img class="adopt-image-src" src="img/dogs/paula.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3 class="adopt-name">Paula</h3>
+                    <div class="gender"> Female </div>
+                </div>
+            </div>
+
+            <div class="adopt-box">
+                <div class="adopt-info">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Description</h3>
+                    <span>Loyal <br> Devoted <br> Forever <br> Reliable <br> Faithful </span>
+                </div>
+                <div class="icons">
+                    <button class="fas fa-shopping-bag" name="add" type="button"></button>
+                    <button class="fas fa-heart" name="like" type="button"></button>
+                </div>
+                <div class="adopt-image">
+                    <img class="adopt-image-src" src="img/dogs/tagpi.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3 class="adopt-name">Tagpi</h3>
+                    <div class="gender"> Female </div>
+                </div>
+            </div>
+
+            <div class="adopt-box">
+                <div class="adopt-info">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Description</h3>
+                    <span>Love <br> Buddy <br> Friend <br> Sidekick <br> Companion </span>
+                </div>
+                <div class="icons">
+                    <button class="fas fa-shopping-bag" name="add" type="button"></button>
+                    <button class="fas fa-heart" name="like" type="button"></button>
+                </div>
+                <div class="adopt-image">
+                    <img class="adopt-image-src" src="img/dogs/villa.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3 class="adopt-name">Villa</h3>
+                    <div class="gender"> Female </div>
+                </div>
+            </div>
+
+            <div class="adopt-box">
+                <div class="adopt-info">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Description</h3>
+                    <span>Loyal <br> Devoted <br> Forever <br> Reliable <br> Faithful </span>
+                </div>
+                <div class="icons">
+                    <button class="fas fa-shopping-bag" name="add" type="button"></button>
+                    <button class="fas fa-heart" name="like" type="button"></button>
+                </div>
+                <div class="adopt-image">
+                    <img class="adopt-image-src" src="img/dogs/chaos.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3 class="adopt-name">Chaos</h3>
+                    <div class="gender"> Male </div>
+                </div>
+            </div>
+
+            <div class="adopt-box">
+                <div class="adopt-info">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Description</h3>
+                    <span>Love <br> Buddy <br> Friend <br> Sidekick <br> Companion </span>
+                </div>
+                <div class="icons">
+                    <button class="fas fa-shopping-bag" name="add" type="button"></button>
+                    <button class="fas fa-heart" name="like" type="button"></button>
+                </div>
+                <div class="adopt-image">
+                    <img class="adopt-image-src" src="img/dogs/harriet.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3 class="adopt-name">Harriet</h3>
+                    <div class="gender"> Female </div>
+                </div>
+            </div>
+
+            <div class="adopt-box">
+                <div class="adopt-info">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Description</h3>
+                    <span>Loyal <br> Devoted <br> Forever <br> Reliable <br> Faithful </span>
+                </div>
+                <div class="icons">
+                    <button class="fas fa-shopping-bag" name="add" type="button"></button>
+                    <button class="fas fa-heart" name="like" type="button"></button>
+                </div>
+                <div class="adopt-image">
+                    <img class="adopt-image-src" src="img/dogs/gamma.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3 class="adopt-name">Gamma</h3>
+                    <div class="gender"> Male </div>
+                </div>
+            </div>
+
+            <div class="adopt-box">
+                <div class="adopt-info">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Description</h3>
+                    <span>Love <br> Buddy <br> Friend <br> Sidekick <br> Companion </span>
+                </div>
+                <div class="icons">
+                    <button class="fas fa-shopping-bag" name="add" type="button"></button>
+                    <button class="fas fa-heart" name="like" type="button"></button>
+                </div>
+                <div class="adopt-image">
+                    <img class="adopt-image-src" src="img/dogs/jack.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3 class="adopt-name">Jack</h3>
+                    <div class="gender"> Male </div>
+                </div>
+            </div>
+
+            <div class="adopt-box">
+                <div class="adopt-info">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Description</h3>
+                    <span>Loyal <br> Devoted <br> Forever <br> Reliable <br> Faithful </span>
+                </div>
+                <div class="icons">
+                    <button class="fas fa-shopping-bag" name="add" type="button"></button>
+                    <button class="fas fa-heart" name="like" type="button"></button>
+                </div>
+                <div class="adopt-image">
+                    <img class="adopt-image-src" src="img/dogs/jill.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3 class="adopt-name">Jill</h3>
+                    <div class="gender"> Female </div>
+                </div>
+            </div>
+
+            <div class="adopt-box">
+                <div class="adopt-info">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Description</h3>
+                    <span>Love <br> Buddy <br> Friend <br> Sidekick <br> Companion </span>
+                </div>
+                <div class="icons">
+                    <button class="fas fa-shopping-bag" name="add" type="button"></button>
+                    <button class="fas fa-heart" name="like" type="button"></button>
+                </div>
+                <div class="adopt-image">
+                    <img class="adopt-image-src" src="img/dogs/judie.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3 class="adopt-name">Judie</h3>
+                    <div class="gender"> Female </div>
+                </div>
+            </div>
+
+            <div class="adopt-box">
+                <div class="adopt-info">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Description</h3>
+                    <span>Loyal <br> Devoted <br> Forever <br> Reliable <br> Faithful </span>
+                </div>
+                <div class="icons">
+                    <button class="fas fa-shopping-bag" name="add" type="button"></button>
+                    <button class="fas fa-heart" name="like" type="button"></button>
+                </div>
+                <div class="adopt-image">
+                    <img class="adopt-image-src" src="img/dogs/louie.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3 class="adopt-name">Louie</h3>
+                    <div class="gender"> Male </div>
+                </div>
+            </div>
+
+            <div class="adopt-box">
+                <div class="adopt-info">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Description</h3>
+                    <span>Love <br> Buddy <br> Friend <br> Sidekick <br> Companion </span>
+                </div>
+                <div class="icons">
+                    <button class="fas fa-shopping-bag" name="add" type="button"></button>
+                    <button class="fas fa-heart" name="like" type="button"></button>
+                </div>
+                <div class="adopt-image">
+                    <img class="adopt-image-src" src="img/dogs/saipa.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3 class="adopt-name">Saipa</h3>
+                    <div class="gender"> Male </div>
+                </div>
+            </div>
+
+            <div class="adopt-box">
+                <div class="adopt-info">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Description</h3>
+                    <span>Loyal <br> Devoted <br> Forever <br> Reliable <br> Faithful </span>
+                </div>
+                <div class="icons">
+                    <button class="fas fa-shopping-bag" name="add" type="button"></button>
+                    <button class="fas fa-heart" name="like" type="button"></button>
+                </div>
+                <div class="adopt-image">
+                    <img class="adopt-image-src" src="img/dogs/taguig.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3 class="adopt-name">Taguig</h3>
+                    <div class="gender"> Female </div>
+                </div>
+            </div>
+
+            <div class="adopt-box">
+                <div class="adopt-info">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Description</h3>
+                    <span>Love <br> Buddy <br> Friend <br> Sidekick <br> Companion </span>
+                </div>
+                <div class="icons">
+                    <button class="fas fa-shopping-bag" name="add" type="button"></button>
+                    <button class="fas fa-heart" name="like" type="button"></button>
+                </div>
+                <div class="adopt-image">
+                    <img class="adopt-image-src" src="img/dogs/tiny.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3 class="adopt-name">Tiny</h3>
+                    <div class="gender"> Female </div>
+                </div>
+            </div>
+
+            <div class="adopt-box">
+                <div class="adopt-info">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Description</h3>
+                    <span>Loyal <br> Devoted <br> Forever <br> Reliable <br> Faithful </span>
+                </div>
+                <div class="icons">
+                    <button class="fas fa-shopping-bag" name="add" type="button"></button>
+                    <button class="fas fa-heart" name="like" type="button"></button>
+                </div>
+                <div class="adopt-image">
+                    <img class="adopt-image-src" src="img/dogs/wafan.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3 class="adopt-name">Wafan</h3>
+                    <div class="gender"> Female </div>
+                </div>
+            </div>
+
+            <div class="adopt-box">
+                <div class="adopt-info">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Description</h3>
+                    <span>Love <br> Buddy <br> Friend <br> Sidekick <br> Companion </span>
+                </div>
+                <div class="icons">
+                    <button class="fas fa-shopping-bag" name="add" type="button"></button>
+                    <button class="fas fa-heart" name="like" type="button"></button>
+                </div>
+                <div class="adopt-image">
+                    <img class="adopt-image-src" src="img/dogs/wolfie.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3 class="adopt-name">Wolfie</h3>
+                    <div class="gender"> Female </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ---------------- ADOPTION CATALOG SECTION ENDS HERE --------------- -->
+
+    <!-- --------------------- UPDATES SECTION STARTS HERE -------------------- -->
+    <section class="updates" id="updates">
+        <h1 class="heading"> <span>Our</span> Updates</h1>
+        <div class="box-container">
+            <!-- 3 loving aspins and 3 sweet puspins -->
+            <div class="box">
+                <h3 class="title">On Estee</h3>
+                <div class="image">
+                    <img src="img/updates/estee.jpg" alt="">
+                </div>
+                <h3 class="ud"> Estee is going to be transferred to an ortho vet for her surgery. She is also blind in 1 eye. We hope the surgery goes well. Please continue supporting and praying for her recovery and vetting. </h3>
+                <div class="list">
+                    <p> This dog is reported to SWS by Karen Faith to have been in the same area for a week with no rescue. It is claimed to have been hit by somebody on the head and leg. This is the reason the dog does not leave her location. She is so afraid
+                        she just hides under it. <br><br>Estee has been confined since yesterday. An x-ray showed that one leg is dislocated and surgery might be necessary to repair the problem. She is also blind on the left eye. <br><br>Tests, medications,
+                        and treatment are now being administered for this poor dog. I would like to request your support for all our rescues, especially those confined, as this is where the bulk of expense is. </p>
+                </div>
+                <div class="amount"><span>Running Bill: </span> P8,000</div>
+                <!-- <div class="amount"><span>Expected Total Bill: </span> P30,000</div> -->
+                <div class="btn-dog">
+                    <button class="imgBtn" onclick="popFormFill()"><img src="img/shop_now_dog.png"></button>
+                </div>
+            </div>
+
+            <div class="box">
+                <h3 class="title">On Akira</h3>
+                <div class="image">
+                    <img src="img/updates/akira.jpg" alt="">
+                </div>
+                <h3 class="ud"> Akira is getting better but still needs medication. Please pray for his continuous recovery. To those who can share with Akira's vetting, we will deeply appreciate it. </h3>
+                <div class="list">
+                    <p> This dog is being taken cared of by an 85 year old who loves Akira but has no funds for vetting. <br><br> Akira developed hernia. This makes it difficult for her to have her bowel movement. This can grown and become much bigger if
+                        left alone. So to arrest the problem, I agreed to fundraise the vetting. <br><br>Medications will first be administered to try to heal the inguinal hernia. If after a week of observation there remains to be no improvement, then
+                        an operation will be necessary. </p>
+                </div>
+                <br><br><br><br><br><br><br>
+                <div class="amount"><span>Running Bill: </span> P10,000</div>
+                <div class="btn-dog">
+                    <button class="imgBtn" onclick="popFormFill()"><img src="img/shop_now_dog.png"></button>
+                </div>
+            </div>
+
+            <div class="box">
+                <h3 class="title">On Bach</h3>
+                <div class="image">
+                    <img src="img/updates/bach.jpg" alt="">
+                </div>
+                <h3 class="ud"> Bach had her much needed amputation and is now under post op recovery. We are hoping for her quick and safe recovery. </h3>
+                <div class="list">
+                    <p> This stray dog from Bacoor was reported to SWS several times. As can easily be seen from photos, she has a mangled foot from being run over by a vehicle. Bones and flesh are exposed. <br><br> Jun found a hard time catching Back but
+                        he finally managed to do so. When placed on the carrier, it took only a short time for Back to bite the plastic and get her head out. <br><br>Back has been confined at Jamir Veterinary Clinic since yesterday. He will be getting
+                        an amputation as the wound can no longer be repaired according to Doc Jamir. </p>
+                </div>
+                <br><br><br><br><br><br>
+                <div class="amount"><span>Running Bill: </span> P20,000</div>
+                <div class="btn-dog">
+                    <button class="imgBtn" onclick="popFormFill()"><img src="img/shop_now_dog.png"></button>
+                </div>
+            </div>
+
+            <div class="box">
+                <h3 class="title">On Pumpkin</h3>
+                <div class="image">
+                    <img src="img/updates/pumpkin.jpg" alt="">
+                </div>
+                <h3 class="ud"> Pumpkin has been confined at Vetlink Veterinary Services - A Community Vet Clinic for three days now. </h3>
+                <div class="list">
+                    <p> She has panleukopenia but meds are bring administered to save her life. Please pray that this cat will get the chance to a better life. <br><br>To those who can assist SWS in saving this poor stray's life, our sincerest thanks! Your
+                        support is badly needed now that funds are depleted yet many rescues remain confined, and new rescues are taken in daily. Lord help us! </p>
+                </div>
+                <br><br><br><br>
+                <div class="btn-cat">
+                    <button class="imgBtn" onclick="popFormFill()"><img src="img/shop_now_cat.png"></button>
+                </div>
+            </div>
+
+            <div class="box">
+                <h3 class="title">On Princess</h3>
+                <div class="image">
+                    <img src="img/updates/princess.jpg" alt="">
+                </div>
+                <h3 class="ud"> This is Princess, she already underwent a lot for treatment. However, after a while that she was released from the vet, Princess is again refusing to eat and is showing weakness. </h3>
+                <div class="list">
+                    <p> Princess has been confined at Vetlink Veterinary Services - A Community Vet Clinic since yesterday. She is administered with the texts and meds needed and is in stable condition. <br><br> To those with extra to share, let us please
+                        Princess and in the process help Ronald who was been a rescuer for years now. Thank you and may God bless us all! </p>
+                </div>
+                <div class="btn-cat">
+                    <button class="imgBtn" onclick="popFormFill()"><img src="img/shop_now_cat.png"></button>
+                </div>
+            </div>
+
+            <div class="box">
+                <h3 class="title">On Sunny</h3>
+                <div class="image">
+                    <img src="img/updates/sunny.jpg" alt="">
+                </div>
+                <h3 class="ud"> This is Sunny, she is a stray cat that has been wandering a lot in the street. It is emaciated, has small facial wounds and looked sick. </h3>
+                <div class="list">
+                    <p> Sunny is now confined at Vetlink Veterinary Services - A Community Vet Clinic and is getting the treatment and meds it needed. May this innocent cat make it and be adopted by a loving human once released. One thing noticeable about
+                        this cat is that it is has heterochromia, meaning two different colored eyes. <br><br> To those with extra to share for Sunny, we will deeply appreciate the help. Unfortuantely for SWS, donations hardly cover the actual expenses.
+                        We implore your support. </p>
+                </div>
+                <div class="btn-cat">
+                    <button class="imgBtn" onclick="popFormFill()"><img src="img/shop_now_cat.png"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- --------------------- UPDATES SECTION ENDS HERE -------------------- -->
+
+    <!-- --------------------- DONATE SECTION STARTS HERE -------------------- -->
+    <section class="donate" id="donate">
+        <h1 class="heading"> Donation <span>Method</span> </h1>
+        <div class="box-container">
+            <div class="box">
+                <img src="img/bdo.png" alt="">
+                <h3>002280238329</h3>
+                <p>Antonia Ramirez</p>
+            </div>
+
+            <div class="box">
+                <img src="img/gcash.png" alt="">
+                <h3>09272182802</h3>
+                <p>Fenady C.</p>
+            </div>
+
+            <div class="box">
+                <img src="img/cbank.png" alt="">
+                <h3>137500012221</h3>
+                <p>SWS Good News Foundation</p>
+            </div>
+
+            <div class="box">
+                <img src="img/ubank.png" alt="">
+                <h3>109452801813</h3>
+                <p>Melanie Ramirez</p>
+            </div>
+        </div>
+    </section>
+    <!-- --------------------- DONATE SECTION ENDS HERE -------------------- -->
+
+    <!-- --------------------- ASK/CONTACT SECTION STARTS HERE -------------------- -->
+    <section class="ask" id="contact">
+        <h1 class="heading"> Ask <span> Us</span></h1>
+        <div class="row">
+            <div class="faq">
+                <h1>Frequently Asked Questions (FAQs)</h1>
+                <!-- faq dropdown -->
+                <div class="faqItem">
+                    <a class="questions">
+                        <h3>How can I adopt?</h3>
+                        <i class="fas fa-plus"></i>
+                        <i class="fas fa-minus"></i>
+                    </a>
+                    <div class="answer">
+                        <h3>Procedure</h3>
+                        <p>
+                            <span class="fas fa-check-circle"></span>Browse and select from our Adoption Catalog <br>
+                            <span class="fas fa-check-circle"></span>Fill up the adoption form <br>
+                            <span class="fas fa-check-circle"></span>Screening thru Video and Personal<br>
+                            <span class="fas fa-check-circle"></span>Strong advocacy to rescue/adopt Aspins and Puspins<br>
+                            <span class="fas fa-check-circle"></span>Visit our shelter<br>
+                            <span class="fas fa-check-circle"></span>Take home your newest furbaby!
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faqItem">
+                    <a class="questions">
+                        <h3>When did you start rescuing?</h3>
+                        <i class="fas fa-plus"></i>
+                        <i class="fas fa-minus"></i>
+                    </a>
+                    <div class="answer">
+                        <p>
+                            <span class="fas fa-check-circle"></span>It was in 2020 when SWS started rescuing strays and animals. Now, it has been only two years since SWS started. The journey has been fast but it was fruitful and very meaningful. The
+                            initial plan was just to save dogs or cats one at a time. <br> <br> Today, SWS has more than 660,000 followers and has rescued more than 1,500 dogs and cats. We have also turned into a foundation and built a shelter, the SWS
+                            Tanauan, Batangas shelter.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faqItem">
+                    <a class="questions">
+                        <h3>What animals do you rescue?</h3>
+                        <i class="fas fa-plus"></i>
+                        <i class="fas fa-minus"></i>
+                    </a>
+                    <div class="answer">
+                        <h3>Dogs and Cats who were: </h3>
+                        <p>
+                            <span class="fas fa-check-circle"></span>Strays<br>
+                            <span class="fas fa-check-circle"></span>Abused<br>
+                            <span class="fas fa-check-circle"></span>Neglected<br>
+                            <span class="fas fa-check-circle"></span>Abandoned<br>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faqItem">
+                    <a class="questions">
+                        <h3>What kind of services do your offer?</h3>
+                        <i class="fas fa-plus"></i>
+                        <i class="fas fa-minus"></i>
+                    </a>
+                    <div class="answer">
+                        <h3>Rescue</h3>
+                        <p>
+                            <span class="fas fa-check-circle"></span>We give a second chance to animals who are in extreme pain.
+                        </p>
+                        <h3>Shelter</h3>
+                        <p>
+                            <span class="fas fa-check-circle"></span>Rescued animals are fed thrice a day, cleaned, and have space to play.<br>
+                        </p>
+                        <h3>Adoption</h3>
+                        <p>
+                            <span class="fas fa-check-circle"></span>SWS adopters are strictly screened to ensure that they can give our rescues a good life.
+                        </p>
+                        <h3>Spay & Neuter</h3>
+                        <p>
+                            <span class="fas fa-check-circle"></span>We promote Spay and Neuter and offer low-cost options.
+                        </p>
+                        <h3>Vaccine Awarenesss</h3>
+                        <p>
+                            <span class="fas fa-check-circle"></span>We advocate for responsible pet ownership through vaccinations.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faqItem">
+                    <a class="questions">
+                        <h3>Can I apply as a volunteer?</h3>
+                        <i class="fas fa-plus"></i>
+                        <i class="fas fa-minus"></i>
+                    </a>
+                    <div class="answer">
+                        <h3>Definitely!</h3>
+                        <p>
+                            <span class="fas fa-check-circle"></span>Fill up the volunteer form <br>
+                            <span class="fas fa-check-circle"></span>Screening thru Video and Personal<br>
+                            <span class="fas fa-check-circle"></span>Strong advocacy to rescue/adopt strays/animals<br>
+                            <span class="fas fa-check-circle"></span>Visit our shelter<br>
+                            <span class="fas fa-check-circle"></span>You can now start volunteering!
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- message form -->
+            <form action="">
+                <h3>Feel Free to Message Us</h3>
+                <input type="text" placeholder="Name" class="box" id="askName" required>
+                <input type="email" placeholder="Email" class="box" id="askEmail" required>
+                <input type="date" class="box" id="askDate" required>
+                <input type="number" class="box" placeholder="Contact Number" id="askNumber" required>
+                <textarea name="" placeholder="Message" id="askMessage" cols="30 " rows="10 " required></textarea>
+                <input type="submit" value="Ask Now " class="btn" onclick="asknow()">
+                <!-- Internal Javascript -->
+                <script>
+                    function asknow() {
+                        if (document.getElementById("askName").value.length == 0 && document.getElementById("askEmail").value.length == 0 && document.getElementById("askDate").value.length == 0 && document.getElementById("askNumber").value.length == 0 && document.getElementById("askMessage").value.length == 0) {
+                            alert("Please fill out our ask form. Thank you!");
+                        } else {
+                            alert('Your response has been recorded. Kindly wait patiently for our response. Thank you!');
+                            window.location = "index.html?#ask";
+                            document.getElementById("askName").value = '';
+                            document.getElementById("askEmail").value = '';
+                            document.getElementById("askNumber").value = '';
+                            document.getElementById("askMessage").value = '';
+                            return;
+
+                        }
+                    }
+                </script>
+            </form>
+        </div>
+    </section>
+    <!-- --------------------- ASK/CONTACT SECTION ENDS HERE -------------------- -->
+
+    <!-- --------------------- FOOTER SECTION STARTS HERE -------------------- -->
+    <section class="footer ">
+        <div class="box-container ">
+            <div class="box ">
+                <h3>Quick Links</h3>
+                <!-- quick links buttons -->
+                <a href="#home "> <i class="fas fa-chevron-right "></i> Home </a>
+                <a href="#about "> <i class="fas fa-chevron-right "></i> About </a>
+                <a href="#services "> <i class="fas fa-chevron-right "></i> Our Services </a>
+                <a href="#adopt "> <i class="fas fa-chevron-right "></i> Our Rescues </a>
+                <a href="#updates "> <i class="fas fa-chevron-right "></i> NewsFeed </a>
+                <a href="#donate "> <i class="fas fa-chevron-right "></i> Donate </a>
+            </div>
+
+            <div class="box ">
+                <h3>Contact Info</h3>
+                <!-- Internal Links: Redirect to these sites -->
+                <a href="# "> <i class="fas fa-phone "></i> 09176363824 </a>
+                <a href="https://straysworthsaving.org/ "> <i class="fas fa fa-globe "></i> Strays Worth Saving </a>
+                <a href="https://www.google.com/maps/place/Tanauan,+Batangas/@14.0913988,121.0388205,12z/data=!3m1!4b1!4m5!3m4!1s0x33bd6f72ec612957:0xb38df4072fe465d6!8m2!3d14.0835445!4d121.1476147 "> <i class="fas fa-map-marker-alt "></i> SWS Shelter - Tanauan, Batangas </a>
+            </div>
+
+            <div class="box ">
+                <h3>Follow Us</h3>
+                <!-- Internal Links: Redirect to these sites -->
+                <a href="https://www.facebook.com/straysworthsaving "> <i class="fab fa-facebook-f "></i> Facebook </a>
+                <a href="https://www.instagram.com/straysworthsaving/ "> <i class="fab fa-instagram "></i> Instagram </a>
+                <a href="https://www.youtube.com/channel/UCGJMLiNqF7dW4X64hk03uSQ "> <i class="fab fa-youtube "></i> Youtube </a>
+            </div>
+
+        </div>
+
+        <div class="footer ">
+            <div class="footerText ">
+                <p>Copyright 2022 || Strays Worth Saving</p>
+                <p>Safe Space for Strays</p>
+                <!-- Internal Link Icons: Redirect to these sites -->
+                <div class="footerIconDiv ">
+                    <a href="https://www.facebook.com/arkaygm/ "> <img src="img/fb.png " alt="fb " class="footerIcon " /> </a>
+                    <a href="https://www.instagram.com/arkayg.m/ "> <img src="img/ig.png " alt="fb " class="footerIcon " /> </a>
+                    <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=new "> <img src="img/gmail.png " alt="fb " class="footerIcon " /> </a>
+                </div>
+                <p>Developer: Roan Kaye G. Mirandilla || Jake Patrick G. Reyes</p>
+            </div>
+        </div>
+
+    </section>
+    <!-- --------------------- FOOTER SECTION ENDS HERE -------------------- -->
+
+    <!-- custom js file link -->
+    <script src="js/script.js "></script>
+</body>
+
+</html>

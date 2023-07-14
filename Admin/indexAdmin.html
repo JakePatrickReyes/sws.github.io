@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safe Space for Strays</title>
+    <!-- font awesome cdn link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- to have an icon displayed at the tab -->
+    <link rel="icon" href="../img/sss.png">
+
+    <!-- custom css file link -->
+    <link rel="stylesheet" type="text/CSS" href="../css/cssAdmin.css">
+</head>
+
+<body>
+    <!-- --------------------- HEADER SECTION STARTS HERE -------------------- -->
+    <header class="header">
+        <a href="#" class="logo"><i class="fas fa-paw"></i> S.S.S Organization</a>
+
+        <!-- navigation bar -->
+        <nav class="navbar">
+            <a href="#home"><i class="fas fa-home"></i> Home </a>
+            <a href="#userRecords"><i class="fas fa-user"></i> Users </a>
+            <a href="#strayRecords"><i class="fas fa-paw"></i> Strays </a>
+            <a href="#donationRecords"><i class="fas fa-hands-helping"></i> Donation </a>
+            <a href="#adoptionRecords"><i class="fas fa-hand-holding-heart"></i> Adoption </a>
+            <a href="#reports"><i class="fas fa-file-medical-alt"></i> Reports </a>
+            <a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout </a>
+        </nav>
+
+        <!-- icon at the navigation bar -->
+        <div class="icons">
+            <div class="fas fa-bars" id="menu-btn"></div>
+        </div>
+
+        <!-- donation fill up form -->
+        <form action="" id="donation-fill-form">
+            <i class="fas fa-times" id="close"></i>
+            <h3>Donation Fill Up Form</h3>
+            <input type="email" name="" placeholder="Enter you email" id="email" class="box" required><br>
+            <input type="text" name="fname" placeholder="First Name" id="fname" class="box" required style="width: 25%;">
+            <input type="text" name="lname" placeholder="Last Name" id="lname" class="box" required style="width: 25%;" ><br>
+            <input type="text" name="contact" placeholder="Contact" id="contact" class="box" required>
+            <div class="box-container">
+                <div class="option" id="bdo" value="bdo">
+                    <img src="../img/bdo.png" alt="">
+                </div>
+                <div class="option" id="gcash" value="gcash">
+                    <img src="../img/gcash.png" alt="">
+                </div>
+                <div class="option" id="cbank" value="cbank">
+                    <img src="../img/cbank.png" alt="">
+                </div>
+                <div class="option" id="ubank" value="ubank">
+                    <img src="../img/ubank.png" alt="">
+                </div>
+            </div>
+            <input type="number" name="" placeholder="Enter Amount" id="amnt" class="box" required>
+            <!-- Dropdown status -->
+            <button type="button" class="btn" id="donateBtn" onclick="submitDonate()">Submit</button>
+        </form>
+
+        <!-- user record fill up form -->
+        <form action="" id="user-fill-up-form">
+            <i class="fas fa-times" id="closeBtn"></i>
+            <h3>User Records Fill Up Form</h3>
+            <input type="email" name="" placeholder="Enter you email" id="adoptEmail" class="box" required>
+            <input type="email" name="username" placeholder="Username" id="adoptEmail" class="box" required><br>
+            <div class="register-gender">
+                <span>Gender:</span>
+                <label class="container">Male<input type="radio" name="radio"><span class="checkmark"> </span></label>
+                <label class="container">Female<input type="radio" name="radio"><span class="checkmark"> </span></label>
+            </div>
+            <input type="text" name="" placeholder="First Name" id="adoptFname" class="name" required>
+            <input type="text" name="" placeholder="Last Name" id="adoptLname" class="name" required><br>
+            <!-- Animal name dropdown -->
+            
+            <input type="number" name="" placeholder="Contact" id="adoptContact" class="box" required>
+            <!-- dropdown status -->
+            <button type="button" value="Submit" class="btn" id="adoptBtn">Submit</button>
+        </form>
+        
+
+        <!-- adoption fill up form -->
+        <form action="" id="adoption-fill-up-form">
+            <i class="fas fa-times" id="closeBtn"></i>
+            <h3>Adoption Fill Up Form</h3>
+            <input type="email" name="" placeholder="Enter you email" id="adoptEmail" class="box" required><br>
+            <input type="text" name="" placeholder="First Name" id="adoptFname" class="name" required>
+            <input type="text" name="" placeholder="Last Name" id="adoptLname" class="name" required><br>
+            <div class="register-gender">
+                <span>Gender:</span>
+                <label class="container">Male<input type="radio" name="radio"><span class="checkmark"> </span></label>
+                <label class="container">Female<input type="radio" name="radio"><span class="checkmark"> </span></label>
+            </div>
+            <input type="number" name="" placeholder="Contact" id="adoptContact" class="box" required>
+            <button type="button" value="Submit" class="btn" id="adoptBtn">Submit</button>
+        </form>
+
+        <!-- sign up volunteer form -->
+        <form action="" id="sign-up-form">
+            <i class="fas fa-times" id="closeVolBtn"></i>
+            <h3>Volunteering Fill Up Form</h3>
+            <input type="email" name="" placeholder="Enter you email" id="volEmail" class="box" required><br>
+            <input type="text" name="" placeholder="First Name" id="volFName" class="name" required>
+            <input type="text" name="" placeholder="Last Name" id="volLName" class="name" required><br>
+            <p>Bithdate:</p>
+            <input type="date" name="" placeholder="Birthday" id="volBDay" class="box" required>
+            <input type="text" name="" placeholder="Address" id="volAdd" class="box" required>
+            <button type="button" value="Sign Up" class="btn" id="volunteerBtn">Submit</button>
+        </form>
+
+        <!-- reports fill up form -->
+        <form action="" id="reports-fill-up-form">
+            <i class="fas fa-times" id="closeRepBtn"></i>
+            <h3>Reports Fill Up Form</h3>
+            <input type="email" placeholder="Enter you email" class="box" id="askEmail" required> <br>
+            <input type="text" name="" placeholder="First Name" id="volFName" class="name" required>
+            <input type="text" name="" placeholder="Last Name" id="volLName" class="name" required><br>
+            <input type="date" class="box" id="askDate" required>
+            <input type="number" class="box" placeholder="Contact Number ex. 09123456789" id="askNumber" required>
+            <textarea name="" placeholder="Message" id="askMessage" cols="30 " rows="10 " required></textarea>
+            <button type="button" value="Ask Now" class="btn" id="reportBtn">Submit</button>
+        </form>
+
+    </header>
+    <!-- --------------------- HEADER SECTION ENDS HERE -------------------- -->
+
+    <!-- --------------------- HOME SECTION STARTS HERE -------------------- -->
+    <section class="home" id="home">
+        <div class="image">
+            <img src="../img/sss.png" alt="">
+        </div>
+
+        <div class="content">
+            <h3>Let's live in a Better World!</h3>
+            <p>Where strays can also have their <br> own safe space. </p>
+            <a href="#userRecords" class="btn"> View Records <span class="fas fa-chevron-down"></span> </a>
+        </div>
+
+        <img src="../img/bottom_wave.png" class="wave" alt="">
+    </section>
+    <!-- --------------------- HOME SECTION ENDS HERE -------------------- -->
+
+    <!-- --------------------- USER RECORDS SECTION STARTS HERE -------------------- -->
+    <section class="userRecords" id="userRecords">
+        <div class="fas fa-plus" id="user-btn" onclick="popFormFill()"></div>
+        <h1 class="heading"> <span>User</span> Records
+        </h1>
+        <!-- table records -->
+        <table class="user-content">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Username</th>
+                    <th>Gender</th>
+                    <th>Address</th>
+                    <th>Contact</th>
+                    <th>User Type</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="user-row">
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <!-- --------------------- USER RECORDS SECTION ENDS HERE -------------------- -->
+
+    <!-- --------------------- STRAY RECORDS SECTION STARTS HERE -------------------- -->
+    <section class="strayRecords" id="strayRecords">
+        <div class="fas fa-plus" id="stray-btn" onclick="popFormFill()"></div>
+        <h1 class="heading"> <span>Strays</span> Records
+        </h1>
+        <!-- table records -->
+        <table class="stray-content">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="stray-row">
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <!-- --------------------- STRAY RECORDS SECTION ENDS HERE -------------------- -->
+
+    <!-- --------------------- DONATION RECORDS SECTION STARTS HERE -------------------- -->
+    <section class="donationRecords" id="donationRecords">
+        <div class="fas fa-plus" id="donate-btn" onclick="popFormFill()"></div>
+        <h1 class="heading"> <span>Donation</span> Records
+        </h1>
+        <!-- table records -->
+        <table class="donation-content">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    <th>Method</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="donation-row">
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <!-- --------------------- DONATION RECORDS SECTION ENDS HERE -------------------- -->
+
+    <!-- --------------------- ADOPTION RECORDS SECTION STARTS HERE -------------------- -->
+    <section class="adoptionRecords" id="adoptionRecords">
+        <div class="fas fa-plus" id="adopt-btn" onclick="popAdoptForm()"></div>
+        <h1 class="heading"> Adoption <span>Records </span></h1>
+        <!-- table records -->
+        <table class="adoption-content">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    <th>Animals</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="adoption-row">
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <!-- --------------------- ADOPTION RECORDS SECTION ENDS HERE -------------------- -->
+
+    <!-- --------------------- REPORTS RECORDS SECTION STARTS HERE -------------------- -->
+    <section class="reportsRecords" id="reports">
+        <div class="fas fa-plus" id="report-btn" onclick="popReportsForm()"></div>
+        <h1 class="heading"> <span>Reports </span></h1>
+        <table class="reports-content">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Date</th>
+                    <th>Contact</th>
+                    <th>Message</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="reports-row">
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <!-- --------------------- REPORTS RECORDS SECTION ENDS HERE -------------------- -->
+
+    <!-- --------------------- FOOTERS SECTION STARTS HERE -------------------- -->
+    <section class="footer ">
+        <div class="box-container ">
+            <div class="box ">
+                <h3>Quick Links</h3>
+                <!-- quick links buttons -->
+                <a href="#home "> <i class="fas fa-chevron-right "></i> Home </a>
+                <a href="#donationRecords "> <i class="fas fa-chevron-right "></i> Donation </a>
+                <a href="#adoptionRecords "> <i class="fas fa-chevron-right "></i> Adoption </a>
+                <a href="#volunteerRecords "> <i class="fas fa-chevron-right "></i> Volunteering </a>
+                <a href="#reports "> <i class="fas fa-chevron-right "></i> Reports </a>
+                <a href="index.html"> <i class="fas fa-chevron-right "></i> Logout </a>
+            </div>
+
+            <div class="box ">
+                <h3>Contact Info</h3>
+                <!-- Internal Links: Redirect to these sites: SWS Org -->
+                <a href="# "> <i class="fas fa-phone "></i> 09176363824 </a>
+                <a href="https://straysworthsaving.org/ "> <i class="fas fa fa-globe "></i> Strays Worth Saving </a>
+                <a href="https://www.google.com/maps/place/Tanauan,+Batangas/@14.0913988,121.0388205,12z/data=!3m1!4b1!4m5!3m4!1s0x33bd6f72ec612957:0xb38df4072fe465d6!8m2!3d14.0835445!4d121.1476147 "> <i class="fas fa-map-marker-alt "></i> SWS Shelter - Tanauan, Batangas </a>
+            </div>
+
+            <div class="box ">
+                <h3>Follow Us</h3>
+                <!-- Internal Links: Redirect to these sites: SWS Org -->
+                <a href="https://www.facebook.com/straysworthsaving "> <i class="fab fa-facebook-f "></i> Facebook </a>
+                <a href="https://www.instagram.com/straysworthsaving/ "> <i class="fab fa-instagram "></i> Instagram </a>
+                <a href="https://www.youtube.com/channel/UCGJMLiNqF7dW4X64hk03uSQ "> <i class="fab fa-youtube "></i> Youtube </a>
+            </div>
+        </div>
+
+        <div class="footer ">
+            <div class="footerText ">
+                <p>Copyright 2022 || Strays Worth Saving</p>
+                <p>Safe Space for Strays</p>
+                <!-- Internal Link Icons: Redirect to these sites: Developer -->
+                <div class="footerIconDiv ">
+                    <a href="https://www.facebook.com/arkaygm/ "> <img src="../img/fb.png " alt="fb " class="footerIcon " /> </a>
+                    <a href="https://www.instagram.com/arkayg.m/ "> <img src="../img/ig.png " alt="fb " class="footerIcon " /> </a>
+                    <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=new "> <img src="../img/gmail.png " alt="fb " class="footerIcon " /> </a>
+                </div>
+                <p>Developer: Roan Kaye G. Mirandilla</p>
+            </div>
+        </div>
+
+    </section>
+    <!-- --------------------- FOOTERS SECTION ENDS HERE -------------------- -->
+
+    <!-- custom js file link -->
+    <script src="../js/scriptAdmin.js "></script>
+</body>
+
+</html>
